@@ -90,7 +90,7 @@ function twentythirteen_setup() {
 	) );
 
 	// This theme uses wp_nav_menu() in one location.
-	register_nav_menu( 'primary', __( 'Navigation Menu', 'twentythirteen' ) );
+	register_nav_menu( 'primary', 'Menu de Navegação');
 
 	/*
 	 * This theme uses a custom image size for featured images, displayed on
@@ -223,20 +223,21 @@ add_filter( 'wp_title', 'twentythirteen_wp_title', 10, 2 );
  * @return void
  */
 function twentythirteen_widgets_init() {
+
 	register_sidebar( array(
-		'name'          => __( 'Main Widget Area', 'twentythirteen' ),
-		'id'            => 'sidebar-1',
-		'description'   => __( 'Appears in the footer section of the site.', 'twentythirteen' ),
+		'name'          => 'Coluna direita',
+		'id'            => 'sidebar',
+		'description'   => 'Aparece em todas as páginas na direita',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h3 class="widget-title">',
 		'after_title'   => '</h3>',
 	) );
-
+        
 	register_sidebar( array(
-		'name'          => __( 'Secondary Widget Area', 'twentythirteen' ),
-		'id'            => 'sidebar-2',
-		'description'   => __( 'Appears on posts and pages in the sidebar.', 'twentythirteen' ),
+		'name'          => __( 'Main Widget Area', 'twentythirteen' ),
+		'id'            => 'sidebar-1',
+		'description'   => __( 'Appears in the footer section of the site.', 'twentythirteen' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h3 class="widget-title">',
@@ -524,3 +525,12 @@ function twentythirteen_customize_preview_js() {
 	wp_enqueue_script( 'twentythirteen-customizer', get_template_directory_uri() . '/js/theme-customizer.js', array( 'customize-preview' ), '20130226', true );
 }
 add_action( 'customize_preview_init', 'twentythirteen_customize_preview_js' );
+
+
+/**
+ * Thumbnails
+ */
+
+if ( function_exists( 'add_theme_support' ) ) {
+	add_image_size( 'header', 720, 405, true );
+}

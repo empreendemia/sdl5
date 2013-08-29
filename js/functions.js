@@ -4,9 +4,15 @@
  * Provides helper functions to enhance the theme experience.
  */
 
+var selectFeaturedPost = function () {
+    return false
+};
+var slideInterval;
+       
 ( function( $ ) {
 	var body    = $( 'body' ),
-	    _window = $( window );
+	    _window = $( window ),
+            slide = true;
 
 	/**
 	 * Adds a top margin to the footer if the sidebar widget area is higher
@@ -69,13 +75,68 @@
 	 * Arranges footer widgets vertically.
 	 */
 	if ( $.isFunction( $.fn.masonry ) ) {
-		var columnWidth = body.is( '.sidebar' ) ? 228 : 245;
-
-		$( '#secondary .widget-area' ).masonry( {
-			itemSelector: '.widget',
-			columnWidth: columnWidth,
-			gutterWidth: 20,
-			isRTL: body.is( '.rtl' )
+		$( '#recent_posts' ).masonry( {
+			itemSelector: '.recent_post'
 		} );
 	}
+        
+        
+	/**
+	 * Slideshow de featured posts
+	 */
+	var selectedFeatured = 0;
+	selectFeaturedPost = function(i, slide) {
+		// interrompe o slide show quando clicado
+		if (!slide) {
+			clearInterval(slideInterval);
+			$('#featured-posts-bar .progress').addClass('off');
+		}
+		
+		// limpa os anteriores
+		$('#featured-posts-bar .progress').removeClass('show-reset');
+		for (var j = 0; j < 5; j++) {
+			$('#featured-posts-bar .progress').removeClass('show-'+j);
+			$('#featured-post-selector-'+j).removeClass('selected');
+		}
+		
+		// mostra o selecionado
+		$('#featured-posts-list').css('margin-top', -(370)*i);
+		$('#featured-posts-bar .progress').addClass('show-'+i);
+		$('#featured-posts-bar .progress').addClass('show-'+i);
+		$('#featured-post-selector-'+i).addClass('selected');
+		
+		// fim do loop
+		if (slide) {
+			if (i === 4) setTimeout(function () {
+				$('#featured-posts-bar .progress').removeClass('show-4');
+				$('#featured-posts-bar .progress').addClass('show-reset');
+			}, 3900);
+		}
+	}
+	var slideFeaturedPosts = function() {
+		selectedFeatured = (selectedFeatured + 1)%5;
+		selectFeaturedPost(selectedFeatured, true);
+	}
+	setTimeout(function () {
+		$('#featured-posts-bar .progress').removeClass('show-none');
+		$('#featured-posts-bar .progress').addClass('show-0'),
+		$('#featured-post-selector-0').addClass('selected');
+		slideInterval = setInterval(slideFeaturedPosts, 4000);
+	}, 50);
+			
+			
+	/* menu superior */
+	$(window).scroll(function() {
+		if ($(window).scrollTop() > 130) {
+			$('#float-navigation').fadeIn(100);
+		}
+		else {
+			$('#float-navigation').fadeOut(100);
+		}
+	});
+	
+	/* fade in */
+	setTimeout(function () {
+		$('.fade-in-start').removeClass('fade-in-start');
+	}, 500);
 } )( jQuery );
