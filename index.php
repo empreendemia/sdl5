@@ -37,7 +37,7 @@ $tip_post = $tip_post[0];
 $exclude_ids[] = $tip_post->ID;
 
 query_posts(array(
-	'posts_per_page'=>'10',
+	'posts_per_page'=>'20',
 	'post__not_in' => $exclude_ids
 ));
 ?>
@@ -102,7 +102,6 @@ query_posts(array(
 									</div>
 								<?php endwhile; ?>
 								<?php endif; ?>
-								<div class="clear"></div>
 							</div><!-- #recent_posts -->
 								
 						</div><!-- #content -->

@@ -117,33 +117,14 @@ add_action( 'after_setup_theme', 'twentythirteen_setup' );
 function twentythirteen_fonts_url() {
 	$fonts_url = '';
 
-	/* Translators: If there are characters in your language that are not
-	 * supported by Source Sans Pro, translate this to 'off'. Do not translate
-	 * into your own language.
-	 */
-	$source_sans_pro = _x( 'on', 'Source Sans Pro font: on or off', 'twentythirteen' );
+    $font_families[] = 'Dosis:400,500,700';
+    $font_families[] = 'Quicksand:300,400,700';
 
-	/* Translators: If there are characters in your language that are not
-	 * supported by Bitter, translate this to 'off'. Do not translate into your
-	 * own language.
-	 */
-	$bitter = _x( 'on', 'Bitter font: on or off', 'twentythirteen' );
-
-	if ( 'off' !== $source_sans_pro || 'off' !== $bitter ) {
-		$font_families = array();
-
-		if ( 'off' !== $source_sans_pro )
-			$font_families[] = 'Source Sans Pro:300,400,700,300italic,400italic,700italic';
-
-		if ( 'off' !== $bitter )
-			$font_families[] = 'Bitter:400,700';
-
-		$query_args = array(
-			'family' => urlencode( implode( '|', $font_families ) ),
-			'subset' => urlencode( 'latin,latin-ext' ),
-		);
-		$fonts_url = add_query_arg( $query_args, "//fonts.googleapis.com/css" );
-	}
+    $query_args = array(
+        'family' => urlencode( implode( '|', $font_families ) ),
+        'subset' => urlencode( 'latin,latin-ext' ),
+    );
+    $fonts_url = add_query_arg( $query_args, "//fonts.googleapis.com/css" );
 
 	return $fonts_url;
 }
@@ -324,29 +305,25 @@ function twentythirteen_entry_meta() {
 	if ( is_sticky() && is_home() && ! is_paged() )
 		echo '<span class="featured-post">' . __( 'Sticky', 'twentythirteen' ) . '</span>';
 
+    echo '<div class="author-thumb">'.get_avatar( get_the_author_meta('email'), '60' ).'</div>';
+    echo '<div class="author-name"><span class="genericon-user"></span> Postado por <a>'.get_the_author().'</a></div>';
+    
 	if ( ! has_post_format( 'link' ) && 'post' == get_post_type() )
 		twentythirteen_entry_date();
 
 	// Translators: used between list items, there is a space after the comma.
-	$categories_list = get_the_category_list( __( ', ', 'twentythirteen' ) );
+	$categories_list = get_the_category_list(', ');
 	if ( $categories_list ) {
-		echo '<span class="categories-links">' . $categories_list . '</span>';
+		echo '<div class="categories-links"><span class="genericon-category"></span> ' . $categories_list . '</div>';
 	}
-
-	// Translators: used between list items, there is a space after the comma.
-	$tag_list = get_the_tag_list( '', __( ', ', 'twentythirteen' ) );
-	if ( $tag_list ) {
-		echo '<span class="tags-links">' . $tag_list . '</span>';
-	}
-
-	// Post author
-	if ( 'post' == get_post_type() ) {
-		printf( '<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s" rel="author">%3$s</a></span>',
-			esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
-			esc_attr( sprintf( __( 'View all posts by %s', 'twentythirteen' ), get_the_author() ) ),
-			get_the_author()
-		);
-	}
+    
+    echo '<div class="likes">';
+    echo '<div class="plus"><g:plusone size="small"></g:plusone></div>';
+    echo '<div class="facebook"><div class="fb-like" data-width="85" data-layout="button_count" data-show-faces="false" data-send="false"></div></div>';
+    echo '<div class="twitter"><a href="http://twitter.com/share" class="twitter-share-button" data-text="3 aplicações práticas do pôquer pra vida de negócios" data-count="horizontal" data-via="empreendemia">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></div>';
+    echo '</div>';
+    
+    echo '<div class="author-description hide"><strong>'.get_the_author().'</strong> '.get_the_author_meta('description').'</div>';
 }
 endif;
 
@@ -367,13 +344,13 @@ function twentythirteen_entry_date( $echo = true ) {
 	else
 		$format_prefix = '%2$s';
 
-	$date = sprintf( '<span class="date"><a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a></span>',
+	$date = sprintf( '<div class="date"><span class="genericon-month"></span> <a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a></div>',
 		esc_url( get_permalink() ),
 		esc_attr( sprintf( __( 'Permalink to %s', 'twentythirteen' ), the_title_attribute( 'echo=0' ) ) ),
 		esc_attr( get_the_date( 'c' ) ),
 		esc_html( sprintf( $format_prefix, get_post_format_string( get_post_format() ), get_the_date() ) )
 	);
-
+    
 	if ( $echo )
 		echo $date;
 

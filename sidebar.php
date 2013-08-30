@@ -23,7 +23,7 @@
             <aside class="widget widget_facebook">
 		        <h3 class="widget-title">Curta a gente no Facebook!</h3>
                 <div class="facebook_likes">
-                    <iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2FEmpreendemia&amp;width=300&amp;colorscheme=light&amp;show_faces=true&amp;border_color=%23ffffff&amp;stream=false&amp;header=false&amp;height=250" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:250px; background-color:#fff;"></iframe>
+                    <div class="fb-like-box" data-href="https://www.facebook.com/Empreendemia" data-width="290" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
                 </div>
             </aside>
             <aside class="widget widget_ad">

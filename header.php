@@ -46,19 +46,39 @@
     
     <script type='text/javascript'>
         googletag.cmd.push(function() {
-            googletag.defineSlot('/36701243/SaiaDoLugar_Topo_728x90', [728, 90], 'div-gpt-ad-1377715617475-0').addService(googletag.pubads());
-            googletag.pubads().enableSingleRequest();
-            googletag.enableServices();
+        googletag.defineSlot('/36701243/SaiaDoLugar_Topo_728x90', [728, 90], 'div-gpt-ad-1377715617475-0').addService(googletag.pubads());
+        googletag.pubads().enableSingleRequest();
+        googletag.enableServices();
         });
         googletag.cmd.push(function() {
-            googletag.defineSlot('/36701243/SaiaDoLugar_Sidebar_300x250', [300, 250], 'div-gpt-ad-1377711891856-0').addService(googletag.pubads());
-            googletag.pubads().enableSingleRequest();
-            googletag.enableServices();
+        googletag.defineSlot('/36701243/SaiaDoLugar_Sidebar_300x250', [300, 250], 'div-gpt-ad-1377711891856-0').addService(googletag.pubads());
+        googletag.pubads().enableSingleRequest();
+        googletag.enableServices();
         });
         googletag.cmd.push(function() {
-            googletag.defineSlot('/36701243/SaiaDoLugar_Sidebar_Vertical', [[120, 600], [160, 600], [300, 250], [300, 600]], 'div-gpt-ad-1377715010885-0').addService(googletag.pubads());
-            googletag.pubads().enableSingleRequest();
-            googletag.enableServices();
+        googletag.defineSlot('/36701243/SaiaDoLugar_Sidebar_Vertical', [[120, 600], [160, 600], [300, 250], [300, 600]], 'div-gpt-ad-1377715010885-0').addService(googletag.pubads());
+        googletag.pubads().enableSingleRequest();
+        googletag.enableServices();
+        });
+        googletag.cmd.push(function() {
+        googletag.defineSlot('/36701243/SaiaDoLugar_LateralDireita', [500, 1080], 'div-gpt-ad-1377869582199-0').addService(googletag.pubads());
+        googletag.pubads().enableSingleRequest();
+        googletag.enableServices();
+        });
+        googletag.cmd.push(function() {
+        googletag.defineSlot('/36701243/SaiaDoLugar_LateralEsquerda', [500, 1080], 'div-gpt-ad-1377869629089-0').addService(googletag.pubads());
+        googletag.pubads().enableSingleRequest();
+        googletag.enableServices();
+        });
+        googletag.cmd.push(function() {
+        googletag.defineSlot('/36701243/SaiaDoLugar_Conteudo_Topo_468x60', [468, 60], 'div-gpt-ad-1377889179116-0').addService(googletag.pubads());
+        googletag.pubads().enableSingleRequest();
+        googletag.enableServices();
+        });
+        googletag.cmd.push(function() {
+        googletag.defineSlot('/36701243/SaiaDoLugar_Conteudo_Fundo_468x60', [468, 60], 'div-gpt-ad-1377889491453-0').addService(googletag.pubads());
+        googletag.pubads().enableSingleRequest();
+        googletag.enableServices();
         });
     </script>
     <!-- END google dfp -->
@@ -91,4 +111,29 @@
             </div><!-- .wrapper -->
         </header><!-- #masthead -->
 
+        <div id="ads_sides">
+            <div class="wrapper">
+                <div id="ad_side_left">
+                    <div class="ad">
+                        <!-- SaiaDoLugar_LateralEsquerda -->
+                        <div id='div-gpt-ad-1377865707407-0'>
+                            <script type='text/javascript'>
+                                googletag.cmd.push(function() { googletag.display('div-gpt-ad-1377865707407-0'); });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <div id="ad_side_right">
+                    <div class="ad">
+                    <!-- SaiaDoLugar_LateralDireita -->
+                    <div id='div-gpt-ad-1377866749300-0'>
+                        <script type='text/javascript'>
+                            googletag.cmd.push(function() { googletag.display('div-gpt-ad-1377866749300-0'); });
+                        </script>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <div id="main" class="site-main">

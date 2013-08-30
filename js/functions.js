@@ -76,9 +76,18 @@ var slideInterval;
 	 */
 	if ( $.isFunction( $.fn.masonry ) ) {
 		$( '#recent_posts' ).masonry( {
-			itemSelector: '.recent_post'
+			itemSelector: '.recent_post',
+			gutterWidth: 5
 		} );
 	}
+	setTimeout(function () {
+		if ( $.isFunction( $.fn.masonry ) ) {
+			$( '#recent_posts' ).masonry( {
+				itemSelector: '.recent_post',
+				gutterWidth: 5
+			} );
+		}
+	}, 1000);
         
         
 	/**
@@ -128,10 +137,12 @@ var slideInterval;
 	/* menu superior */
 	$(window).scroll(function() {
 		if ($(window).scrollTop() > 130) {
-			$('#float-navigation').fadeIn(100);
+			$('#float-navigation').fadeIn(200);
+			$('#ads_sides').addClass('float');
 		}
 		else {
-			$('#float-navigation').fadeOut(100);
+			$('#float-navigation').fadeOut(200);
+			$('#ads_sides').removeClass('float');
 		}
 	});
 	
@@ -139,4 +150,29 @@ var slideInterval;
 	setTimeout(function () {
 		$('.fade-in-start').removeClass('fade-in-start');
 	}, 500);
+	
+	/* author */
+	$('.entry-header .author-name a').click(function() {$('.entry-header .author-description').toggle(200)});
+	$('.entry-header .author-thumb').click(function() {$('.entry-header .author-description').toggle(200)});
+	$('.entry-footer .author-name a').click(function() {$('.entry-footer .author-description').toggle(200)});
+	$('.entry-footer .author-thumb').click(function() {$('.entry-footer .author-description').toggle(200)});
+	
+	
+	
+	/* facebook */
+	(function(d, s, id) {
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) {return;}
+	js = d.createElement(s); js.id = id;
+	js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1&appId=285597901457818";
+	fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+	
+	/* plus */
+	(function() {
+	  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+	  po.src = 'https://apis.google.com/js/plusone.js';
+	  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+	})();
+	
 } )( jQuery );
